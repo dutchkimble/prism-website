@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prism International</title>
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #005f87; /* Deep professional blue */
+            --accent-blue: #2596be; /* Brighter accent */
+            --text-dark: #1f2937;
+            --text-gray: #4b5563;
+            --text-light: #9ca3af;
+            --bg-body: #f3f4f6;
+            --white: #ffffff;
+            --border-subtle: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-gray);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16.5px 5%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            position: absolute;
+            left: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-link-wrapper {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: var(--accent-blue);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-link:hover {
+            opacity: 0.8;
+        }
+
+        .logo {
+            height: 55px; /* 10% larger than 50px */
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        /* Main Content Area */
+        .main-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-subtle);
+            margin-left: 15px;
+        }
+
+        /* Modern Accordion */
+        details {
+            border-bottom: 1px solid var(--border-subtle);
+            transition: var(--transition);
+        }
+
+        details:last-of-type {
+            border-bottom: none;
+        }
+
+        summary {
+            padding: 18px 10px;
+            color: var(--text-dark);
+            font-weight: 500;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        summary:hover {
+            background-color: #f9fafb;
+            color: var(--accent-blue);
+            padding-left: 15px; /* Subtle shift */
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.2em;
+            font-weight: 300;
+            color: var(--text-light);
+            transition: transform 0.3s ease;
+        }
+
+        details[open] > summary::after {
+            content: '-';
+            transform: rotate(180deg);
+            color: var(--accent-blue);
+        }
+
+        details[open] > summary {
+            color: var(--accent-blue);
+            padding-left: 15px;
+        }
+
+        /* Nested Accordion Styling */
+        .level-2 {
+            margin-left: 20px;
+            border-left: 2px solid var(--border-subtle);
+            border-bottom: none;
+        }
+        
+        .level-2 summary {
+            font-size: 0.95em;
+            padding: 12px 15px;
+            color: var(--text-gray);
+        }
+        
+        .level-3-list {
+            padding: 10px 15px 20px 35px;
+        }
+
+        .level-3-item {
+            padding: 6px 0;
+            font-size: 0.9em;
+            color: var(--text-gray);
+            display: flex;
+            align-items: baseline;
+        }
+
+        .role-tag {
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        /* Document Links Styling */
+        .document-links {
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .document-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .document-links a:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
+        }
+
+        .document-links a::before {
+            content: 'PDF';
+            font-size: 0.65em;
+            background: #ef4444;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-right: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Group Companies Grid */
+        .group-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .company-card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .company-card:hover {
+            background: var(--white);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .company-role {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .company-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .company-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 30px 20px 20px;
+            margin-top: 0;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-header {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 5px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .divider-vertical {
+            background-color: #374151;
+            height: 100%;
+        }
+
+        .contact-text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .contact-text.right-align {
+            text-align: right;
+        }
+
+        .contact-label {
+            color: #9ca3af;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+
+        .copyright-bar {
+            border-top: 1px solid #374151;
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #6b7280;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .copyright-bar a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .copyright-bar a:hover {
+            color: var(--white);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .divider-vertical {
+                display: none;
+            }
+            .contact-text.right-align {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Glass Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="files/logo.jpg" alt="Prism International Logo" class="logo">
+                </a>
+            </div>
+            <div class="company-name">PRISM INTERNATIONAL</div>
+            <div class="contact-link-wrapper">
+                <a href="#contact" class="contact-link">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <div class="card">
+            <p class="intro-text">
+                Prism International Private Limited is a registered Non-Banking Financial - Core Investment Company within the meaning of the Core Investment Companies (Reserve Bank) Directions, 2016, and is purely into investment activities.
+            </p>
+
+            <div class="section-title">Corporate Information & Compliance</div>
+
+            <!-- Accordion Section -->
+            <details class="level-1">
+                <summary>Board & Committees</summary>
+                
+                <details class="level-2">
+                    <summary>Board of Directors</summary>
+                    <div class="level-3-list">
+                        <div class="level-3-item">Prem Kishan Dass Gupta <span class="role-tag">Chairman</span></div>
+                        <div class="level-3-item">Ishaan Gupta</div>
+                        <div class="level-3-item">Samvid Gupta</div>
+                    </div>
+                </details>
+
+                <details class="level-2">
+                    <summary>Audit Committee</summary>
+                    <div class="level-3-list">
+                        <div class="level-3-item">Prem Kishan Dass Gupta <span class="role-tag">Chairman</span></div>
+                        <div class="level-3-item">Ishaan Gupta</div>
+                        <div class="level-3-item">Samvid Gupta</div>
+                    </div>
+                </details>
+
+                <details class="level-2">
+                    <summary>Nomination & Remuneration Committee</summary>
+                    <div class="level-3-list">
+                        <div class="level-3-item">Prem Kishan Dass Gupta <span class="role-tag">Chairman</span></div>
+                        <div class="level-3-item">Ishaan Gupta</div>
+                        <div class="level-3-item">Samvid Gupta</div>
+                    </div>
+                </details>
+
+                <details class="level-2">
+                    <summary>Risk Management Committee</summary>
+                    <div class="level-3-list">
+                        <div class="level-3-item">Prem Kishan Dass Gupta <span class="role-tag">Chairman</span></div>
+                        <div class="level-3-item">Ishaan Gupta</div>
+                        <div class="level-3-item">Samvid Gupta</div>
+                    </div>
+                </details>
+
+                <details class="level-2">
+                    <summary>Asset Liability Committee</summary>
+                    <div class="level-3-list">
+                        <div class="level-3-item">Prem Kishan Dass Gupta <span class="role-tag">Chairman</span></div>
+                        <div class="level-3-item">Ishaan Gupta</div>
+                        <div class="level-3-item">Samvid Gupta</div>
+                    </div>
+                </details>
+            </details>
+
+            <details class="level-1">
+                <summary>Annual Reports</summary>
+                <div class="document-links">
+                    <a href="documents/Annual_Report_2024-25.pdf" target="_blank">Annual Report 2024-25</a>
+                    <a href="documents/Annual_Report_2023-24.pdf" target="_blank">Annual Report 2023-24</a>
+                    <a href="documents/Annual_Report_2022-23.pdf" target="_blank">Annual Report 2022-23</a>
+                </div>
+            </details>
+
+            <details class="level-1">
+                <summary>Financials</summary>
+                <div class="document-links">
+                    <a href="documents/Financial_Results_FY_2024-25.pdf" target="_blank">Financial Results FY 2024-25</a>
+                    <a href="documents/Financial_Results_FY_2023-24.pdf" target="_blank">Financial Results FY 2023-24</a>
+                    <a href="documents/Financial_Results_FY_2022-23.pdf" target="_blank">Financial Results FY 2022-23</a>
+                </div>
+            </details>
+
+            <details class="level-1">
+                <summary>Notices</summary>
+                <div class="document-links">
+                    <a href="documents/Notice_AGM_2024.pdf" target="_blank">Notice of AGM 2024</a>
+                    <a href="documents/Notice_EGM_Oct_2023.pdf" target="_blank">Notice of EGM - October 2023</a>
+                    <a href="documents/Notice_Board_Meeting_May_2023.pdf" target="_blank">Notice of Board Meeting - May 2023</a>
+                </div>
+            </details>
+
+            <div class="section-title">Group Companies</div>
+            <div class="group-grid">
+                <div class="company-card">
+                    <span class="company-role">Subsidiary Company</span>
+                    <span class="company-link">Perfect Communications Private Limited</span>
+                </div>
+                <a href="https://gatewaydistriparks.com" target="_blank" class="company-card" style="text-decoration:none; display:block;">
+                    <span class="company-role">Associate Company</span>
+                    <span class="company-link">Gateway Distriparks Limited</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <span class="footer-header">Contact Us</span>
+            
+            <div class="contact-grid">
+                <div class="contact-text right-align">
+                    <span class="contact-label">Regd. Office:</span> 4th Floor, Prius Platinum<br>
+                    Saket District Centre, New Delhi 110017, India<br>
+                    <span class="contact-label">CIN:</span> U74899DL1994PTC061703
+                </div>
+                
+                <div class="divider-vertical"></div>
+                
+                <div class="contact-text">
+                    <span class="contact-label">General Enquiry:</span> mail@prism-international.in<br>
+                    <span class="contact-label">Principal Nodal Officer:</span> pno@prism-international.in<br>
+                    <span class="contact-label">Phone:</span> +91 11 4888 7888
+                </div>
+            </div>
+
+            <div class="copyright-bar">
+                <span>Copyright © 2026 Prism International Private Limited</span>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

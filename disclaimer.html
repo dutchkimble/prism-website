@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - Prism International</title>
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #005f87;
+            --accent-blue: #2596be;
+            --text-dark: #1f2937;
+            --text-gray: #4b5563;
+            --text-light: #9ca3af;
+            --bg-body: #f3f4f6;
+            --white: #ffffff;
+            --border-subtle: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-gray);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16.5px 5%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            position: absolute;
+            left: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            flex: 1;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            padding: 30px;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .return-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--accent-blue);
+            text-decoration: underline;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .return-link:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 30px 20px 20px;
+            margin-top: 0;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-header {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 5px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .divider-vertical {
+            background-color: #374151;
+            height: 100%;
+        }
+
+        .contact-text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .contact-text.right-align {
+            text-align: right;
+        }
+
+        .contact-label {
+            color: #9ca3af;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+
+        .copyright-bar {
+            border-top: 1px solid #374151;
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #6b7280;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="files/logo.jpg" alt="Prism International Logo" class="logo">
+                </a>
+            </div>
+            <div class="company-name">PRISM INTERNATIONAL</div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="card">
+            <div class="section-title">Disclaimer</div>
+
+            <p><strong>WITNESSETH:</strong> That the information, services, nomenclature, and images contained herein are provided <em>caveat emptor</em>, on an "as is" basis. Prism International Private Limited ("Prism") hereby expressly disclaims any and all warranties, whether express, implied, or statutory, including but not limited to implied warranties of merchantability and fitness for a particular purpose.</p>
+
+            <p><strong>KNOW ALL MEN BY THESE PRESENTS:</strong> That in no event shall Prism be held liable for any loss, injury, or damage—whether direct, indirect, incidental, or consequential—arising out of or in connection with the access, use, or <em>perusal</em> of this website. This limitation of liability shall apply <em>in toto</em>, notwithstanding any failure of essential purpose of any limited remedy.</p>
+
+            <p><strong>FURTHERMORE:</strong> The content herewith may be amended, modified, or updated <em>prima facie</em> without prior notice at the absolute discretion of Prism. Prism does not warrant that the functions contained in the material will be uninterrupted or error-free, nor that defects will be corrected <em>instanter</em>.</p>
+
+            <p><strong>JURISDICTION:</strong> This Disclaimer shall be governed by and construed in accordance with the laws of India. Any and all disputes arising herefrom shall be subject to the exclusive jurisdiction of the Courts in Delhi, <em>non obstante</em> any other venue or forum. By accessing this medium, the user signifies their assent to these terms <em>in perpetuum</em>.</p>
+
+            <a href="index.html" class="return-link">RETURN TO HOMEPAGE</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span class="footer-header">Contact Us</span>
+            
+            <div class="contact-grid">
+                <div class="contact-text right-align">
+                    <span class="contact-label">Regd. Office:</span> 4th Floor, Prius Platinum<br>
+                    Saket District Centre, New Delhi 110017, India<br>
+                    <span class="contact-label">CIN:</span> U74899DL1994PTC061703
+                </div>
+                
+                <div class="divider-vertical"></div>
+                
+                <div class="contact-text">
+                    <span class="contact-label">General Enquiry:</span> mail@prism-international.in<br>
+                    <span class="contact-label">Principal Nodal Officer:</span> pno@prism-international.in<br>
+                    <span class="contact-label">Phone:</span> +91 11 4888 7888
+                </div>
+            </div>
+
+            <div class="copyright-bar">
+                <span>Copyright © 2026 Prism International Private Limited</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
