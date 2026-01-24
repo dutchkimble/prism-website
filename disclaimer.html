@@ -194,6 +194,24 @@
             justify-content: center;
             gap: 20px;
         }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .divider-vertical {
+                display: none;
+            }
+            .contact-text.right-align {
+                text-align: center;
+            }
+            .company-name {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
